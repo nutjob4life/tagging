@@ -17,7 +17,7 @@ jobs:
                 run: echo "::set-output image_tag=$(echo ${{github.ref}} | awk -F/ '{print $NF}')"
             -
                 id: builder
-                run: echo ${{tagger.image_tag}}
+                run: echo ${{steps.tagger.outputs.image_tag}}
 
 ...
 # -*- mode: yaml; indent: 4; fill-column: 120; coding: utf-8 -*-
