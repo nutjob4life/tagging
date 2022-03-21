@@ -13,9 +13,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -
-                env:
-                    context: ${{toJSON(github.event)}}
-                run: echo $context
+                id: tagger
+                run: echo "::set-output image_tag=$(echo ${{github.ref}} | awk -F/ '{print $NF}')"
+            -
+                id: builder
+                run: echo ${{tagger.image_tag}}
 
 ...
 # -*- mode: yaml; indent: 4; fill-column: 120; coding: utf-8 -*-
