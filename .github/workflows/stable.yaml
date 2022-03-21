@@ -1,0 +1,21 @@
+---
+
+name: 🇨🇩 Tag Demo
+
+on:
+    push:
+        branches:
+            - 'release/*'
+
+jobs:
+    stable:
+        name: 🐴 Stable
+        runs-on: ubuntu-latest
+        steps:
+            -
+                env:
+                    context: ${{toJSON(github.event)}}
+                run: echo $context
+
+...
+# -*- mode: yaml; indent: 4; fill-column: 120; coding: utf-8 -*-
